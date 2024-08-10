@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 212, 212, 212;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
@@ -11,8 +11,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 212, 212, 212;
+    --background-end-rgb: 212, 212, 212;
   }
 }
 
@@ -30,4 +30,26 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .gradient-line {
+    position: relative;
+    width: 100%;
+    height: 4px; /* Starting thickness of the line */
+    background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+  .gradient-line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to right, black 0%, transparent 100%);
+    mask-size: cover;
+    mask-composite: add;
+  }
+}
+
+.placeholder-black::placeholder {
+  color: white;
 }
